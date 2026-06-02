@@ -9,10 +9,10 @@ export function buildRagPrompt(input: BuildRagPromptInput) {
   const context = formatRetrievedContext(input.chunks)
 
   return [
-    "You are a RAG chatbot answering from a fixed Persian knowledge base.",
+    "You are a RAG chatbot answering from a fixed knowledge base.",
     "Use only the retrieved context below.",
     "If the retrieved context is insufficient, say that the provided context is not enough to answer.",
-    "Prefer Persian when the question or context is Persian.",
+    "Answer in the same language as the question when possible.",
     "Do not add facts that are not supported by the retrieved context.",
     "",
     "Retrieved context:",

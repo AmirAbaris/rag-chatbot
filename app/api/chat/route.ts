@@ -5,7 +5,7 @@ import { buildRagPrompt } from "@/lib/prompt"
 import { retrieveRelevantChunks, type RetrievedChunk } from "@/lib/retrieval"
 
 const INSUFFICIENT_CONTEXT_ANSWER =
-  "اطلاعات بازیابی‌شده برای پاسخ‌دهی به این سوال کافی نیست."
+  "The retrieved context is not sufficient to answer this question."
 
 type ChatRequest = {
   apiKey?: unknown

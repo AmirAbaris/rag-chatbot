@@ -53,7 +53,7 @@ export function ChatPanel() {
             Grounded answer
           </div>
           <h2 className="mt-2 text-xl font-semibold tracking-tight text-foreground">
-            Ask the local RAG knowledge base
+            Ask the benchmark paper
           </h2>
         </div>
 
@@ -106,7 +106,7 @@ export function ChatPanel() {
               id="question"
               className="min-h-36 resize-y rounded-lg border border-input bg-background p-3 text-sm leading-7 text-foreground transition outline-none placeholder:text-muted-foreground focus:border-ring focus:ring-3 focus:ring-ring/50"
               dir="auto"
-              placeholder="RAGAS چیست؟"
+              placeholder="What abilities does RGB evaluate?"
               value={question}
               onChange={(event) => setQuestion(event.target.value)}
             />

@@ -1,28 +1,36 @@
 const STOP_WORDS = new Set([
-  "از",
-  "است",
-  "اگر",
-  "اما",
-  "این",
-  "آیا",
-  "با",
-  "به",
-  "برای",
-  "در",
-  "را",
-  "شد",
-  "شده",
-  "شود",
-  "که",
-  "کند",
-  "کنند",
-  "می",
-  "نه",
-  "و",
-  "یا",
-  "چیست",
-  "چقدر",
-  "چه",
+  "a",
+  "an",
+  "and",
+  "are",
+  "as",
+  "at",
+  "be",
+  "by",
+  "can",
+  "for",
+  "from",
+  "how",
+  "in",
+  "is",
+  "it",
+  "of",
+  "on",
+  "or",
+  "that",
+  "the",
+  "their",
+  "this",
+  "to",
+  "was",
+  "were",
+  "what",
+  "when",
+  "where",
+  "which",
+  "who",
+  "why",
+  "with",
 ])
 
 /**
@@ -125,9 +133,7 @@ export function cosineSimilarity(
  */
 function normalizeText(text: string) {
   return text
+    .normalize("NFKD")
+    .replace(/\p{Diacritic}/gu, "")
     .toLowerCase()
-    .replace(/[ي]/g, "ی")
-    .replace(/[ك]/g, "ک")
-    .replace(/[أإآ]/g, "ا")
-    .replace(/[ًٌٍَُِّْ]/g, "")
 }

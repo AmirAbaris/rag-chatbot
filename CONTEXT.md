@@ -12,6 +12,8 @@ _Avoid_: Generic chatbot, AI assistant
 The fixed source material the chatbot is allowed to use when grounding answers.
 _Avoid_: Corpus, documents, dataset
 
+The current Knowledge Base source is `data/knowledge-base.txt`.
+
 **Question**:
 The user's input that asks the chatbot for an answer.
 _Avoid_: Query, prompt, message

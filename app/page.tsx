@@ -8,11 +8,11 @@ export default function Page() {
           <div className="max-w-2xl">
             <p className="text-sm font-medium text-primary">RAG Chatbot MVP</p>
             <h1 className="mt-2 text-3xl font-semibold tracking-tight text-foreground">
-              Grounded Persian Q&A.
+              Grounded RAG benchmark Q&A.
             </h1>
           </div>
           <p className="max-w-sm text-sm leading-6 text-muted-foreground">
-            Retrieval context stays visible beside every answer.
+            Answers are grounded in the RGB benchmark paper.
           </p>
         </header>
 
