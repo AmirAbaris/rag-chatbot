@@ -22,6 +22,9 @@ _Avoid_: Query, prompt, message
 A specific piece of knowledge base text selected as relevant to a question.
 _Avoid_: Document, source, passage
 
+Retrieved chunks are ranked with MiniSearch over paragraph-based Knowledge Base
+chunks.
+
 **Retrieved Context**:
 The set of retrieved chunks provided to the model for answer generation.
 _Avoid_: Context window, source bundle

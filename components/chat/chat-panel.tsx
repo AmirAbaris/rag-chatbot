@@ -53,7 +53,7 @@ export function ChatPanel() {
             Grounded answer
           </div>
           <h2 className="mt-2 text-xl font-semibold tracking-tight text-foreground">
-            Ask the benchmark paper
+            Ask the RGB knowledge base
           </h2>
         </div>
 

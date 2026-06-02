@@ -1,8 +1,3 @@
-Knowledge Base Source: Benchmarking Large Language Models in Retrieval-Augmented Generation
-Pages: 9
-
-[Page 1]
-
 Benchmarking Large Language Models in Retrieval-Augmented Generation
 Jiawei Chen1,3, Hongyu Lin 1,*, Xianpei Han 1,2,*, Le Sun 1,2
 1Chinese Information Processing Laboratory 2State Key Laboratory of Computer Science
@@ -65,8 +60,6 @@ Figure 1: Illustration of 4 kinds of abilities required for retrieval-augmented 
 However, Retrieval-Augmented Generation brings not only positive effects to LLMs (Liu, Zhang, and Liang 2023;
 Maynez et al. 2020). On one hand, there is a significant amount of noise information even fake news in the content available on the Internet, which poses challenges for search engines in accurately retrieving desirable knowledge. On the other hand, LLMs suffer from unreliable generation challenge. LLMs can be misled by incorrect information contained in the context (Bian et al. 2023) and also suffer from hallucination during the generation (Adlakha et al. 2023), resulting in generating content that goes beyond external inarXiv:2309.01431v2 [cs.CL] 20 Dec 2023
 
-[Page 2]
-
 formation. These challenges result in LLMs being unable to consistently generate reliable and accurate responses. Unfortunately, currently there lacks of comprehensive understanding on how these factors can influence RAG, and how could each model survives from these drawbacks and improvement their performance via information retrieval. As a result, there is a pressing need for a comprehensive evaluation of LLMs on their ability to effectively utilize retrieved information, as well as their ability to withstand the various drawbacks present in information retrieval.
 To this end, this paper conducts a comprehensive evaluation of RAG for current LLMs. Specifically, we create a new
 Retrieval-Augmented Generation Benchmark, namely RGB, in both English and Chinese. In order to ensure that the internal knowledge of LLMs does not introduce bias into the evaluation results, RGB chooses to aggregate the latest news information and constructs queries based on the news information. Then, based on these queries, we use Search API to fetch relevant documents and select most relevant snippets from the content as external retrieved documents. Finally, based on different compositions of query and document-set pairs, we expand the corpus and divided it into 4 testbeds to evaluate the following basic abilities of LLMs according to the common challenges in RAG, as shown in Figure 1:
@@ -94,8 +87,6 @@ Dowmunt 2021; Ji et al. 2023) i.e., they may generate irrelevant or factually in
 2020; Lewis et al. 2020; Borgeaud et al. 2022; Izacard et al. 2022; Shi et al. 2023; Ren et al. 2023). Retrievalaugmented models have achieved remarkable results in various tasks such as open-domain QA (Izacard and Grave
 2021; Trivedi et al. 2023; Li et al. 2023a), dialogue (Cai
 1Our code&data: https://github.com/chen700564/RGB.
-
-[Page 3]
 
 News Collection
 The 2022 Nobel Prize for Physiology and Medicine was awarded on 
@@ -150,8 +141,6 @@ Information Integration is a capacity to integrate answers from multiple documen
 For example, for the question “Who are the champions of the U.S. Open 2022 men’s and women’s singles?” , the two champions may be mentioned in different documents. In order to provide better answers to complex questions, it is necessary for LLMs to have the ability to integrate information.
 Counterfactual Robustness refers to a capacity to handle errors in external knowledge. In the real world, there is an abundance of false information on the internet. Please
 
-[Page 4]
-
 note that we only evaluate the situation that LLMs are given warnings about potential risks in the retrieved information through instruction.
 In real-world scenarios, it is not possible to obtain perfect documents with all the necessary external knowledge.
 Therefore, evaluating these four abilities of the model becomes essential in order to measure the RAG of LLMs.
@@ -199,8 +188,6 @@ Rejection rate is used to measure negative rejection.
 When only noisy documents are provided, LLMs should output the specific content – “I can not answer the question because of the insufficient information in documents.” (We use instructions to inform the model.). If the model generates this content, it indicates a successful rejection.
 Error detection rate measures whether the model can detect the factual errors in the documents for counterfactual robustness. When the provided documents contain factual errors, the model should output the specific content – “There are factual errors in the provided documents.” (We use in-
 
-[Page 5]
-
 English Chinese
 Noise Ratio 0 0.2 0.4 0.6 0.8 0 0.2 0.4 0.6 0.8
 ChatGPT (OpenAI 2022) 96.33 94.67 94.00 90.00 76.00 95.67 94.67 91.00 87.67 70.67
@@ -246,8 +233,6 @@ Error Analysis. To better comprehend the negative impact of noise on model gener
 (1) Long-distance information. LLMs often face difficulty in identifying the correct answer from external documents when the information related to the question is distant from the information related to the answer. This scenario is quite common as longer texts are frequently encountered
 3We use gpt-3.5-turbo api in the experiments.
 
-[Page 6]
-
 on the internet. In such cases, it is typical for the question’s information to be initially presented at the start of the document and subsequently referred to using pronouns. In Table 2, the question information (“Qatar Open 2022”) is only mentioned once at the beginning and is far from where the answer text “Anett Kontaveit” appears. This situation may cause LLMs to depend on information from other documents and create false impressions, i.e., hallucination.
 (2) Evidence uncertainty. Before highly anticipated events, like the release of new Apple products or the announcement of the Oscars, there is often a significant amount of speculative information circulating on the internet. Although the relevant documents explicitly state that it is uncertain or speculative content, they can still impact on the retrieval-augmented generation of LLMs. In Table 2, when the noise ratio increases, the content of erroneous documents is all about some people’s predictions about the name of the headset (“Apple Reality Pro”). Even if there is a correct answer (“Vision Pro”) in the relevant documents,
 LLMs can still be misled by uncertain evidences.
@@ -284,8 +269,6 @@ When comparing the model to Table 1, we observed that it has a weak information 
 (2) Complex questions are more challenging for RAG with noisy documents. Performance decline becomes significant when the noise ratio is 0.4, but for simple problems, a significant decline occurs only at a noise ratio of 0.8 at a significance level of 0.05. This indicates that complex problems are more vulnerable to interference from noise. We speculate that this is because solving complex problems requires integrating information from multiple documents, and this information can be considered as noise to each other, making it harder for the model to extract relevant information from the documents.
 Error Analysis. We conducted an error analysis on
 ChatGLM2-6B (noise ratio is 0). Apart from the similar errors founded in the noise robustness experiment (38% of the total), there are also three types of unique errors. We have presented these cases in Table 6.
-
-[Page 7]
 
 English ChineseNoise Ratio 0 0.2 0.4 0 0.2 0.4ChatGPT 55 51 34 63 58 47ChatGLM-6B45 36 35 60 53 52ChatGLM2-6B34 32 21 44 43 32Vicuna-7B-v1.360 53 43 43 36 25Qwen-7B-Chat55 50 37 67 56 55BELLE-7B-2M40 34 24 49 41 38
 Table 5: The experimental result of information integration measured by accuracy (%) under different noise ratios. We can see that information integration poses a challenge for
@@ -325,8 +308,6 @@ Conclusion
 In this paper, we evaluated four abilities of retrievalaugmented generation in LLMs: noise robustness, negative rejection, information integration, and counterfactual robustness. To conduct the evaluation, we built Retrieval-
 Augmented Generation Benchmark (RGB). The instances of
 RGB are generated from latest news articles and the external documents obtained from search engines. The experimental results suggest that current LLMs have limitations in the 4 abilities. This indicates that there is still a significant amount of work needed to effectively apply RAG to LLMs. To ensure accurate and reliable responses from LLMs, it is crucial to exercise caution and carefully design for RAG.
-
-[Page 8]
 
 Acknowledgements
 This research work is supported by the National Natural
@@ -406,8 +387,6 @@ T.; Riedel, S.; and Kiela, D. 2020. Retrieval-Augmented
 Generation for Knowledge-Intensive NLP Tasks. In Proceedings of the 34th International Conference on Neural
 Information Processing Systems , NIPS’20. Red Hook, NY ,
 USA: Curran Associates Inc. ISBN 9781713829546.
-
-[Page 9]
 
 Li, D.; Rawat, A. S.; Zaheer, M.; Wang, X.; Lukasik, M.;
 Veit, A.; Yu, F.; and Kumar, S. 2023a. Large Language
