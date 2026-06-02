@@ -4,6 +4,9 @@ import { generateOpenRouterAnswer } from "@/lib/openrouter"
 import { buildRagPrompt } from "@/lib/prompt"
 import { retrieveRelevantChunks, type RetrievedChunk } from "@/lib/retrieval"
 
+const INSUFFICIENT_CONTEXT_ANSWER =
+  "اطلاعات بازیابی‌شده برای پاسخ‌دهی به این سوال کافی نیست."
+
 type ChatRequest = {
   apiKey?: unknown
   question?: unknown
@@ -31,6 +34,15 @@ export async function POST(
   try {
     const body = validateChatRequest(await request.json())
     const chunks = retrieveRelevantChunks(body.question)
+
+    if (chunks.length === 0) {
+      return NextResponse.json({
+        answer: INSUFFICIENT_CONTEXT_ANSWER,
+        chunks,
+        model: "local-retrieval",
+      })
+    }
+
     const prompt = buildRagPrompt({
       question: body.question,
       chunks,

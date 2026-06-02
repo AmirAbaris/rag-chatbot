@@ -200,11 +200,11 @@ Provider:
 
 Default model:
 
-- `deepseek/deepseek-chat-v3-0324:free`
+- `openrouter/owl-alpha`
 
 Fallback model:
 
-- `z-ai/glm-4.5-air:free`
+- None for MVP
 
 API key strategy:
 
@@ -219,6 +219,7 @@ Provider behavior:
 - The server route receives the API key from the client request.
 - The server route uses the key only for the current OpenRouter request.
 - The server route must not log the key.
+- If retrieval returns no chunks, the server route returns a deterministic insufficient-context answer without calling OpenRouter.
 - If the default model fails, show an error that makes the selected model visible to the user. Automatic fallback can be added later.
 
 ## Technical Stack

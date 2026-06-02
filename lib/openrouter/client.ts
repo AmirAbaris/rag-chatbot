@@ -6,7 +6,7 @@ import type {
 
 const OPENROUTER_CHAT_COMPLETIONS_URL =
   "https://openrouter.ai/api/v1/chat/completions"
-const DEFAULT_MODEL = "deepseek/deepseek-chat-v3-0324:free"
+const DEFAULT_MODEL = "openrouter/owl-alpha"
 
 /**
  *
@@ -14,7 +14,7 @@ const DEFAULT_MODEL = "deepseek/deepseek-chat-v3-0324:free"
  * @returns generated answer and model id
  */
 export async function generateOpenRouterAnswer(
-  request: OpenRouterChatRequest,
+  request: OpenRouterChatRequest
 ): Promise<OpenRouterChatResponse> {
   const model = request.model ?? DEFAULT_MODEL
   const response = await fetch(OPENROUTER_CHAT_COMPLETIONS_URL, {
@@ -34,9 +34,9 @@ export async function generateOpenRouterAnswer(
       temperature: 0.2,
     }),
   })
-  const data = (await response.json().catch(() => null)) as
-    | OpenRouterCompletionResponse
-    | null
+  const data = (await response
+    .json()
+    .catch(() => null)) as OpenRouterCompletionResponse | null
 
   if (!response.ok) {
     throw new Error(getOpenRouterErrorMessage(data, response.status, model))
@@ -86,7 +86,7 @@ function extractAnswerText(data: OpenRouterCompletionResponse | null) {
 function getOpenRouterErrorMessage(
   data: OpenRouterCompletionResponse | null,
   status: number,
-  model: string,
+  model: string
 ) {
   const providerMessage = data?.error?.message?.trim()
 
