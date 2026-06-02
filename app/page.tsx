@@ -6,13 +6,15 @@ export default function Page() {
       <div className="mx-auto grid max-w-6xl gap-6">
         <header className="flex flex-col gap-3 border-b border-border pb-5 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
-            <p className="text-sm font-medium text-primary">RAG Chatbot MVP</p>
+            <p className="text-sm font-medium text-primary">
+              RGB Knowledge Base Chat
+            </p>
             <h1 className="mt-2 text-3xl font-semibold tracking-tight text-foreground">
-              Grounded Persian Q&A.
+              Ask the RAG benchmark knowledge base.
             </h1>
           </div>
           <p className="max-w-sm text-sm leading-6 text-muted-foreground">
-            Retrieval context stays visible beside every answer.
+            Answers are grounded in the retrieved knowledge base chunks.
           </p>
         </header>
 
