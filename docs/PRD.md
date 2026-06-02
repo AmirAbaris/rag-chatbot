@@ -200,11 +200,10 @@ Provider:
 
 Default model:
 
-- `openrouter/free`
-
-Fallback models:
-
 - `deepseek/deepseek-chat-v3-0324:free`
+
+Fallback model:
+
 - `z-ai/glm-4.5-air:free`
 
 API key strategy:
