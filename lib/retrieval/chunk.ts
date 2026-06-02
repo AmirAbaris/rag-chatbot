@@ -25,7 +25,7 @@ export function createKnowledgeChunks(knowledgeBase: string): KnowledgeChunk[] {
     }
 
     chunks.push(
-      pendingHeading ? `${pendingHeading}\n\n${paragraph}` : paragraph,
+      pendingHeading ? `${pendingHeading}\n\n${paragraph}` : paragraph
     )
     pendingHeading = ""
   }

@@ -6,9 +6,7 @@ export default function Page() {
       <div className="mx-auto grid max-w-6xl gap-6">
         <header className="flex flex-col gap-3 border-b border-border pb-5 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
-            <p className="text-sm font-medium text-primary">
-              RAG Chatbot MVP
-            </p>
+            <p className="text-sm font-medium text-primary">RAG Chatbot MVP</p>
             <h1 className="mt-2 text-3xl font-semibold tracking-tight text-foreground">
               Grounded Persian Q&A.
             </h1>

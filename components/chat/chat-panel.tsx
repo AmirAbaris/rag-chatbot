@@ -79,7 +79,7 @@ export function ChatPanel() {
                 onChange={(event) => setApiKey(event.target.value)}
               />
               <Button
-              className="flex items-center justify-center h-full mr-2"
+                className="mr-2 flex h-full items-center justify-center"
                 aria-label={isKeyVisible ? "Hide API key" : "Show API key"}
                 size="icon-sm"
                 type="button"

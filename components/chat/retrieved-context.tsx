@@ -37,7 +37,7 @@ export function RetrievedContext({ chunks }: RetrievedContextProps) {
           </div>
           <p
             dir="auto"
-            className="whitespace-pre-wrap text-sm leading-7 text-foreground"
+            className="text-sm leading-7 whitespace-pre-wrap text-foreground"
           >
             {chunk.text}
           </p>

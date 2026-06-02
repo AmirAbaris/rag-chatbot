@@ -14,7 +14,7 @@ const DEFAULT_TOP_K = 3
 const DEFAULT_KNOWLEDGE_BASE_PATH = path.join(
   process.cwd(),
   "data",
-  "knowledge-base.txt",
+  "knowledge-base.txt"
 )
 const NEAR_SCORE_DELTA = 0.06
 
@@ -26,7 +26,7 @@ const NEAR_SCORE_DELTA = 0.06
  */
 export function retrieveRelevantChunks(
   question: string,
-  options: RetrievalOptions = {},
+  options: RetrievalOptions = {}
 ): RetrievedChunk[] {
   const knowledgeBase = readKnowledgeBase(options.knowledgeBasePath)
 
@@ -45,7 +45,7 @@ export function retrieveRelevantChunks(
 export function retrieveFromText(
   question: string,
   knowledgeBase: string,
-  options: Pick<RetrievalOptions, "topK"> = {},
+  options: Pick<RetrievalOptions, "topK"> = {}
 ): RetrievedChunk[] {
   const topK = options.topK ?? DEFAULT_TOP_K
   const chunks = createKnowledgeChunks(knowledgeBase)
@@ -76,7 +76,7 @@ function readKnowledgeBase(knowledgeBasePath = DEFAULT_KNOWLEDGE_BASE_PATH) {
  */
 function rankChunks(
   question: string,
-  chunks: KnowledgeChunk[],
+  chunks: KnowledgeChunk[]
 ): RetrievedChunk[] {
   const chunkTokens = chunks.map((chunk) => tokenize(chunk.text))
   const questionTokens = tokenize(question)
@@ -92,7 +92,7 @@ function rankChunks(
         id: chunk.id,
         score: cosineSimilarity(
           questionVector,
-          vectorize(chunkTokens[index], idf),
+          vectorize(chunkTokens[index], idf)
         ),
         text: chunk.text,
       },

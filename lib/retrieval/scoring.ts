@@ -32,7 +32,7 @@ const STOP_WORDS = new Set([
  */
 export function tokenize(text: string): string[] {
   return (normalizeText(text).match(/[\p{L}\p{N}]+/gu) ?? []).filter(
-    (token) => !STOP_WORDS.has(token),
+    (token) => !STOP_WORDS.has(token)
   )
 }
 
@@ -93,7 +93,7 @@ export function vectorize(tokens: string[], idf: Map<string, number>) {
  */
 export function cosineSimilarity(
   leftVector: Map<string, number>,
-  rightVector: Map<string, number>,
+  rightVector: Map<string, number>
 ) {
   let dotProduct = 0
   let leftMagnitude = 0

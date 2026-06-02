@@ -29,7 +29,7 @@ type ChatErrorResponse = {
  * @returns generated answer with retrieved chunks
  */
 export async function POST(
-  request: Request,
+  request: Request
 ): Promise<NextResponse<ChatResponse | ChatErrorResponse>> {
   try {
     const body = validateChatRequest(await request.json())
@@ -68,7 +68,7 @@ export async function POST(
       },
       {
         status: getErrorStatus(error),
-      },
+      }
     )
   }
 }
@@ -142,7 +142,7 @@ class ChatRouteError extends Error {
    */
   constructor(
     message: string,
-    public readonly status: number,
+    public readonly status: number
   ) {
     super(message)
   }

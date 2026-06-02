@@ -34,8 +34,8 @@ function formatRetrievedContext(chunks: BuildRagPromptInput["chunks"]) {
   return chunks
     .map((chunk) =>
       [`[${chunk.id}]`, `Score: ${chunk.score.toFixed(3)}`, chunk.text].join(
-        "\n",
-      ),
+        "\n"
+      )
     )
     .join("\n\n")
 }
