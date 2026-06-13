@@ -50,10 +50,10 @@ export function ChatPanel() {
         <div className="border-b border-border p-5">
           <div className="flex items-center gap-2 text-sm font-medium text-primary">
             <MessageSquareText className="size-4" aria-hidden="true" />
-            Grounded answer
+            Answer
           </div>
           <h2 className="mt-2 text-xl font-semibold tracking-tight text-foreground">
-            Ask the RGB knowledge base
+            Ask about the RGB paper
           </h2>
         </div>
 
@@ -143,12 +143,12 @@ export function ChatPanel() {
         <div className="mb-4 flex items-start justify-between gap-3">
           <div>
             <p className="text-sm font-medium text-foreground">
-              Retrieved context
+              Retrieved from paper
             </p>
             <p className="mt-1 text-xs leading-5 text-muted-foreground">
               {chunks.length
-                ? "Similarity scores shown per chunk."
-                : "Awaiting retrieval."}
+                ? "Passages from the paper, ranked by relevance."
+                : "Passages from data/knowledge-base.txt."}
             </p>
           </div>
           <span className="rounded-md bg-secondary px-2 py-1 font-mono text-xs text-secondary-foreground">
@@ -178,7 +178,7 @@ function AnswerPanel({ answer, isLoading, model }: AnswerPanelProps) {
       {isLoading ? (
         <div className="flex items-center gap-3 text-sm text-muted-foreground">
           <Loader2 className="size-4 animate-spin" aria-hidden="true" />
-          Retrieving chunks and generating an answer...
+          Searching the paper and generating an answer...
         </div>
       ) : answer ? (
         <div className="grid gap-3">

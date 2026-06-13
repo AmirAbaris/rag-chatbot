@@ -9,7 +9,7 @@ export function buildRagPrompt(input: BuildRagPromptInput) {
   const context = formatRetrievedContext(input.chunks)
 
   return [
-    "You are a RAG chatbot answering from a fixed knowledge base.",
+    "You are answering questions using only the RGB benchmark paper by Chen et al. (2024).",
     "Use only the retrieved context below.",
     "If the retrieved context is insufficient, say that the provided context is not enough to answer.",
     "Answer in the same language as the question when possible.",

@@ -10,7 +10,7 @@ export function RetrievedContext({ chunks }: RetrievedContextProps) {
   if (chunks.length === 0) {
     return (
       <div className="rounded-lg border border-dashed border-border bg-background p-4 text-sm text-muted-foreground">
-        No retrieved chunks yet.
+        No passages retrieved from the paper yet.
       </div>
     )
   }
