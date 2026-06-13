@@ -6,7 +6,7 @@ import MiniSearch from "minisearch"
 import { createKnowledgeChunks } from "./chunk"
 import type { KnowledgeChunk, RetrievedChunk, RetrievalOptions } from "./types"
 
-const DEFAULT_TOP_K = 3
+const DEFAULT_MAX_CHUNKS = 3
 const DEFAULT_KNOWLEDGE_BASE_PATH = path.join(
   process.cwd(),
   "data",
@@ -28,7 +28,7 @@ export function retrieveRelevantChunks(
   const knowledgeBase = readKnowledgeBase(options.knowledgeBasePath)
 
   return retrieveFromText(question, knowledgeBase, {
-    topK: options.topK,
+    maxChunks: options.maxChunks,
   })
 }
 
@@ -42,12 +42,12 @@ export function retrieveRelevantChunks(
 export function retrieveFromText(
   question: string,
   knowledgeBase: string,
-  options: Pick<RetrievalOptions, "topK"> = {}
+  options: Pick<RetrievalOptions, "maxChunks"> = {}
 ): RetrievedChunk[] {
-  const topK = options.topK ?? DEFAULT_TOP_K
+  const maxChunks = options.maxChunks ?? DEFAULT_MAX_CHUNKS
   const chunks = createKnowledgeChunks(knowledgeBase)
 
-  if (topK <= 0 || chunks.length === 0 || question.trim().length === 0) {
+  if (maxChunks <= 0 || chunks.length === 0 || question.trim().length === 0) {
     return []
   }
 
@@ -57,7 +57,7 @@ export function retrieveFromText(
   })
   const topScore = results[0]?.score ?? 0
 
-  return results.slice(0, topK).map((result) => ({
+  return results.slice(0, maxChunks).map((result) => ({
     id: String(result.id),
     score: topScore > 0 ? result.score / topScore : 0,
     text: String(result.text ?? ""),

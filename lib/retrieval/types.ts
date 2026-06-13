@@ -11,5 +11,5 @@ export type KnowledgeChunk = {
 
 export type RetrievalOptions = {
   knowledgeBasePath?: string
-  topK?: number
+  maxChunks?: number
 }
